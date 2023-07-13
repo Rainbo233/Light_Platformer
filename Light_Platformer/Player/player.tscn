@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwcydr68ii5nw"]
+[gd_scene load_steps=7 format=3 uid="uid://dwcydr68ii5nw"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_u0cmm"]
 [ext_resource type="Texture2D" uid="uid://bp7o8s72tcb6o" path="res://icon.svg" id="2_nffcp"]
+[ext_resource type="Texture2D" uid="uid://7uwthr6b4lhp" path="res://Player/pngimg.com - light_PNG14432.png" id="3_r0tp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4gcp"]
 size = Vector2(126, 126)
+
+[sub_resource type="Gradient" id="Gradient_cl311"]
+offsets = PackedFloat32Array(0, 0.780645)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jx8ne"]
+gradient = SubResource("Gradient_cl311")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_u0cmm")
@@ -14,3 +27,16 @@ texture = ExtResource("2_nffcp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_l4gcp")
+
+[node name="Dash_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Flashlight" type="PointLight2D" parent="."]
+position = Vector2(400, 0)
+texture = ExtResource("3_r0tp5")
+
+[node name="Player_Glow" type="PointLight2D" parent="."]
+energy = 0.5
+texture = SubResource("GradientTexture2D_jx8ne")
+
+[connection signal="timeout" from="Dash_Timer" to="." method="_on_dash_timer_timeout"]
