@@ -10,12 +10,19 @@ func _process(delta):
 
 func _on_body_entered(body):
 	
-	if is_dash:
+	if body is CharacterBody2D:
 		
-		body.enable_dash()
+		if is_dash:
 		
-	else:
+			body.enable_dash()
+			queue_free()
 		
-		body.enable_double_jump()
+		else:
 		
+			body.enable_double_jump()
+			queue_free()
+		
+		
+	
+	
 	
