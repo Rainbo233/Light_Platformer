@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player/player.gd" id="1_u0cmm"]
 [ext_resource type="Texture2D" uid="uid://bp7o8s72tcb6o" path="res://icon.svg" id="2_nffcp"]
 [ext_resource type="Texture2D" uid="uid://7uwthr6b4lhp" path="res://Player/pngimg.com - light_PNG14432.png" id="3_r0tp5"]
-[ext_resource type="PackedScene" uid="uid://bsoi3ji06ltso" path="res://Levels/stopwatch.tscn" id="4_dimto"]
+[ext_resource type="PackedScene" uid="uid://bsoi3ji06ltso" path="res://Player/Levels/stopwatch.tscn" id="4_dimto"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4gcp"]
 size = Vector2(126, 126)
