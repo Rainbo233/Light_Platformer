@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwcydr68ii5nw"]
+[gd_scene load_steps=10 format=3 uid="uid://dwcydr68ii5nw"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_u0cmm"]
 [ext_resource type="Texture2D" uid="uid://bp7o8s72tcb6o" path="res://icon.svg" id="2_nffcp"]
 [ext_resource type="Texture2D" uid="uid://7uwthr6b4lhp" path="res://Player/pngimg.com - light_PNG14432.png" id="3_r0tp5"]
+[ext_resource type="PackedScene" uid="uid://bsoi3ji06ltso" path="res://Levels/stopwatch.tscn" id="4_dimto"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4gcp"]
 size = Vector2(126, 126)
@@ -19,6 +20,16 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
+[sub_resource type="Gradient" id="Gradient_rheva"]
+offsets = PackedFloat32Array(0.60396, 1)
+colors = PackedColorArray(0.890821, 0.791795, 0.546722, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cktyv"]
+gradient = SubResource("Gradient_rheva")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_u0cmm")
 
@@ -32,11 +43,24 @@ shape = SubResource("RectangleShape2D_l4gcp")
 one_shot = true
 
 [node name="Flashlight" type="PointLight2D" parent="."]
-position = Vector2(400, 0)
+scale = Vector2(1.5, 1)
 texture = ExtResource("3_r0tp5")
+offset = Vector2(405, 0)
 
 [node name="Player_Glow" type="PointLight2D" parent="."]
 energy = 0.5
 texture = SubResource("GradientTexture2D_jx8ne")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -224)
+scale = Vector2(1.96, 0.519999)
+texture = SubResource("GradientTexture2D_cktyv")
+
+[node name="stopwatch" parent="." instance=ExtResource("4_dimto")]
+offset_left = -24.0
+offset_top = -235.0
+offset_right = 10.0
+offset_bottom = -209.0
+text = "Text"
 
 [connection signal="timeout" from="Dash_Timer" to="." method="_on_dash_timer_timeout"]
