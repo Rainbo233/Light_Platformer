@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var dash_enabled := false
 
 @onready var dash_timer := $Dash_Timer
+@onready var flashlight := $Flashlight
 
 var jumps := 2
 var dash_off_cooldown := true
@@ -15,6 +16,9 @@ var dash_off_cooldown := true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
+	
+	flashlight.look_at(get_global_mouse_position())
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -58,6 +62,11 @@ func jump(delta) -> void:
 		velocity.y = jump_velocity
 	
 
+func enable_double_jump() -> void:
+	
+	double_jump_enabled = true
+	
+
 func dash(direction) -> void:
 	
 	dash_off_cooldown = false
@@ -66,6 +75,10 @@ func dash(direction) -> void:
 	
 	
 
+func enable_dash() -> void:
+	
+	dash_enabled = true
+	
 
 func _on_dash_timer_timeout():
 	
