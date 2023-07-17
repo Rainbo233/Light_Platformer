@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm7dy8jl2274u"]
+
+[ext_resource type="PackedScene" uid="uid://dg524lkbenbak" path="res://Pickups/pickup.tscn" id="1_3mwao"]
+[ext_resource type="Texture2D" uid="uid://dcsokrsou3jxm" path="res://Pickups/right-arrow-svgrepo-com.svg" id="2_d66ie"]
+
+[node name="Pickup" instance=ExtResource("1_3mwao")]
+is_dash = true
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.0343541, 0.0438401)
+texture = ExtResource("2_d66ie")
